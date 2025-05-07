@@ -2,11 +2,11 @@
 
 public class RepositorioEquipamento
 {
-    private List<Equipamento> listaEquipamento = [];
+    private readonly List<Equipamento> ListaEquipamento = [];
 
     public List<Equipamento> GetListaEquipamento()
     {
-        return listaEquipamento;
+        return ListaEquipamento;
     }
 
     

@@ -4,9 +4,9 @@ namespace GestaoDeEstoque;
 
 public class TelaEquipamentos
 {
-    RepositorioEquipamento repositorioEquipamento = new RepositorioEquipamento();
+    private readonly RepositorioEquipamento RepositorioEquipamento = new RepositorioEquipamento();
     
-    public char ApresentarMenu()
+    public static char ApresentarMenu()
     {
         Console.Clear();
         Console.WriteLine("-- MENU DO ESTOQUE --");
@@ -32,13 +32,13 @@ public class TelaEquipamentos
         } while (nome is { Length: > 6 });
         
         Console.WriteLine("Digite o preco do equipamento: ");
-        var preco = double.Parse(Console.ReadLine()); 
+        var preco = double.Parse(Console.ReadLine() ?? "0.0"); 
 
         Console.WriteLine("Digite o numero de serie do equipamento: ");
         var numeroDeSerie = Console.ReadLine();
 
         Console.WriteLine("Digite a data de aquisição do equipamento [dd/mm/yyyy]: ");
-        var dataString = Console.ReadLine();
+        var dataString = Console.ReadLine() ?? "01/01/0001";
         
         var dataDeAquisicao = DateTime.ParseExact(dataString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
@@ -47,15 +47,15 @@ public class TelaEquipamentos
 
         var equipamento = new Equipamento(nome, preco, numeroDeSerie, dataDeAquisicao, fabricante);
 
-        repositorioEquipamento.GetListaEquipamento().Add(equipamento);
+        RepositorioEquipamento.GetListaEquipamento().Add(equipamento);
     }
 
     public void MostrarEquipamento()
     {
-        repositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
+        RepositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
     }
 
-    private char SelecionarEdição()
+    private static char SelecionarEdição()
     {
         Console.Clear();
         Console.WriteLine("-- QUAL VALOR DESEJA EDITAR? --");
@@ -76,7 +76,7 @@ public class TelaEquipamentos
 
         var opcao = SelecionarEdição();
 
-        foreach (var equipamento in repositorioEquipamento.GetListaEquipamento().Where
+        foreach (var equipamento in RepositorioEquipamento.GetListaEquipamento().Where
                      (equipamento => equipamento.Id == equipId))
         {
             switch (opcao)
@@ -90,32 +90,32 @@ public class TelaEquipamentos
         }
     }
 
-    private string EditarNome()
+    private static string EditarNome()
     {
         Console.WriteLine("Dgite o novo nome do equipamento: ");
         var nome = Console.ReadLine();
         return nome ?? " ";
     }
-    private double EditarPreco()
+    private static double EditarPreco()
     {
         Console.WriteLine("Dgite o novo nome do equipamento: ");
         var preco = double.Parse(Console.ReadLine());
         return preco;
     }
-    private string EditarNumeroDeSerie()
+    private static string EditarNumeroDeSerie()
     {
         Console.WriteLine("Dgite o novo nome do equipamento: ");
         var nSerie = Console.ReadLine();
         return nSerie ?? " ";
     }
-    private DateTime EditarDataDeAquisicao()
+    private static DateTime EditarDataDeAquisicao()
     {
         Console.WriteLine("Dgite o novo nome do equipamento: ");
         var dataString = Console.ReadLine();
         var data = DateTime.ParseExact(dataString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         return data;
     }
-    private string EditarFabricante()
+    private static string EditarFabricante()
     {
         Console.WriteLine("Dgite o novo nome do equipamento: ");
         var fabricante = Console.ReadLine();
@@ -127,10 +127,10 @@ public class TelaEquipamentos
         Console.WriteLine("Digite o id do equipamento: ");
         var id = int.Parse(Console.ReadLine());
 
-        foreach (var equip in repositorioEquipamento.GetListaEquipamento().Where
+        foreach (var equip in RepositorioEquipamento.GetListaEquipamento().Where
                      (equip => id == equip.Id))
         {
-            repositorioEquipamento.GetListaEquipamento().Remove(equip);
+            RepositorioEquipamento.GetListaEquipamento().Remove(equip);
         }
     }
 }

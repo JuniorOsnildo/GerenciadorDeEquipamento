@@ -2,10 +2,10 @@
 
 public static class GeradorDeId
 {
-    private static Random random = new Random();
+    private static readonly Random Rand = new Random();
     
     public static int GerarId()
     {
-        return random.Next();
+        return Rand.Next();
     }
 }
