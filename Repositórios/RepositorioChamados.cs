@@ -1,10 +1,10 @@
 ﻿namespace GestaoDeEstoque;
 
-public class RepositorioChamados
+public static class RepositorioChamados
 {
-    private readonly List<Chamado> ListaChamados = [];
+    private static readonly List<Chamado> ListaChamados = [];
 
-    public List<Chamado> GetListaDeChamados()
+    public static List<Chamado> GetListaDeChamados()
     {
         return ListaChamados;
     }

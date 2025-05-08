@@ -3,14 +3,14 @@
 public class Chamado(
     string titulo,
     string descricao,
-    Equipamento equipamento,
+    Equipamento? equipamento,
     DateTime dataDeAbertura
 )
 {
     public int Id { get; } = GeradorDeId.GerarId();
     public string Titulo { get; set; } = titulo;
     public string Descricao { get; set; } = descricao;
-    public Equipamento Equipamento { get; set; } = equipamento;
+    public Equipamento? Equipamento { get; set; } = equipamento;
     public DateTime DataDeAbertura { get; set; } = dataDeAbertura;
 
     public override string ToString()

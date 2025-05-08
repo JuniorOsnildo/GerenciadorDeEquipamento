@@ -1,10 +1,10 @@
 ﻿namespace GestaoDeEstoque;
 
-public class RepositorioEquipamento
+public static class RepositorioEquipamento
 {
-    private readonly List<Equipamento> ListaEquipamento = [];
+    private static readonly List<Equipamento> ListaEquipamento = [];
 
-    public List<Equipamento> GetListaEquipamento()
+    public static List<Equipamento> GetListaEquipamento()
     {
         return ListaEquipamento;
     }

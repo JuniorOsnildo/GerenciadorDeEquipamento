@@ -4,13 +4,11 @@ namespace GestaoDeEstoque;
 
 public class TelaEquipamentos
 {
-    private readonly RepositorioEquipamento RepositorioEquipamento = new RepositorioEquipamento();
-    
     public static char ApresentarMenu()
     {
         Console.Clear();
-        Console.WriteLine("-- MENU DO ESTOQUE --");
-        Console.WriteLine("1 -> Registro de equipamento");
+        Console.WriteLine("-- MENU DE EQUIPAMENTOS --");
+        Console.WriteLine("1 -> Registrar equipamento");
         Console.WriteLine("2 -> Lista de equipamentos");
         Console.WriteLine("3 -> Editar equipamento");
         Console.WriteLine("4 -> Remover equipamento");
@@ -53,6 +51,11 @@ public class TelaEquipamentos
     public void MostrarEquipamento()
     {
         RepositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
+    }
+
+    public static Equipamento? BuscarEquipamentoPorId(int id)
+    {
+        return RepositorioEquipamento.GetListaEquipamento().FirstOrDefault(eq => eq.Id == id);
     }
 
     private static char SelecionarEdição()
