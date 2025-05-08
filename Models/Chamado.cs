@@ -3,23 +3,26 @@
 public class Chamado(
     string titulo,
     string descricao,
-    Equipamento? equipamento,
+    Equipamento equipamento,
     DateTime dataDeAbertura
 )
 {
     public int Id { get; } = GeradorDeId.GerarId();
     public string Titulo { get; set; } = titulo;
     public string Descricao { get; set; } = descricao;
-    public Equipamento? Equipamento { get; set; } = equipamento;
+    public Equipamento Equipamento { get; set; } = equipamento;
     public DateTime DataDeAbertura { get; set; } = dataDeAbertura;
 
     public override string ToString()
     {
+        var data = DateTime.Now;
+        var diferenca = data - DataDeAbertura;
+        
         return $"-----------------------------------------\n" +
                $"[{Id}] - {Titulo}\n" +
-               $"Preço de aquisição: {Equipamento.Nome}\n" +
-               $"Numero de serie: {Descricao}\n" +
-               $"Data de aquisiçõa: {DataDeAbertura}\n" +
+               $"Equipamento: {Equipamento.Nome}\n" +
+               $"Descrição: {Descricao}\n" +
+               $"Tempo de abertura: {diferenca} Dias\n" +
                $"-----------------------------------------";
     }
 }

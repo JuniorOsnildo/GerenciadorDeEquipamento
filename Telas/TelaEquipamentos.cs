@@ -18,7 +18,7 @@ public class TelaEquipamentos
         return Console.ReadKey().KeyChar;
     }
 
-    public void CriarEquipamento()
+    public static void CriarEquipamento()
     {
         var nome = "";
         
@@ -27,9 +27,9 @@ public class TelaEquipamentos
             Console.Clear();
             Console.WriteLine("Digite o nome do equipamento [minimo 6 characteres]: ");
             nome = Console.ReadLine();
-        } while (nome is { Length: > 6 });
+        } while (nome is { Length: < 6 });
         
-        Console.WriteLine("Digite o preco do equipamento: ");
+        Console.WriteLine("Digite o preço do equipamento: ");
         var preco = double.Parse(Console.ReadLine() ?? "0.0"); 
 
         Console.WriteLine("Digite o numero de serie do equipamento: ");
@@ -40,17 +40,28 @@ public class TelaEquipamentos
         
         var dataDeAquisicao = DateTime.ParseExact(dataString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-        Console.WriteLine("Digite o nome do produto [minimo 6 characteres]: ");
-        var fabricante = Console.ReadLine();
+        Console.WriteLine("Digite o nome do fabricante [minimo 6 characteres]: ");
+        var fabricanteString = Console.ReadLine();
 
-        var equipamento = new Equipamento(nome, preco, numeroDeSerie, dataDeAquisicao, fabricante);
+        Fabricante fabri = null;
+        foreach (var fabricante in RepositorioFabricante.GetListaFabricante().Where
+                     (fabricante => fabricanteString == fabricante.Nome))
+        {
+            fabri = fabricante;
+        }
+
+        var equipamento = fabri is null 
+            ? new Equipamento(nome, preco, numeroDeSerie, dataDeAquisicao, fabricanteString) 
+            : new Equipamento(nome, preco, numeroDeSerie, dataDeAquisicao, fabri);
+        
 
         RepositorioEquipamento.GetListaEquipamento().Add(equipamento);
     }
 
-    public void MostrarEquipamento()
+    public static void MostrarEquipamento()
     {
         RepositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
+        Console.ReadKey();
     }
 
     public static Equipamento? BuscarEquipamentoPorId(int id)
@@ -72,7 +83,7 @@ public class TelaEquipamentos
         return Console.ReadKey().KeyChar;
     }
 
-    public void EditarEquipamento()
+    public static void EditarEquipamento()
     {
         Console.WriteLine("Digite o Id do equipamento: ");
         var equipId = int.Parse(Console.ReadLine());
@@ -125,7 +136,7 @@ public class TelaEquipamentos
         return fabricante ?? " ";
     }
 
-    public void ExcluirEquipamento()
+    public static void ExcluirEquipamento()
     {
         Console.WriteLine("Digite o id do equipamento: ");
         var id = int.Parse(Console.ReadLine());

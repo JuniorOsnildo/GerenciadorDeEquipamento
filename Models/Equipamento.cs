@@ -1,19 +1,32 @@
 ﻿namespace GestaoDeEstoque;
 
-public class Equipamento(
-    string nome,
-    double precoDeAquisicao,
-    string numeroDeSerie,
-    DateTime dataDeAquisicao,
-    string fabricante)
+public class Equipamento
 {
     public int Id { get; } = GeradorDeId.GerarId();
-    public string Nome { get; set; } = nome;
-    public double  PrecoDeAquisicao { get; set; } = precoDeAquisicao;
-    public string NumeroDeSerie { get; set; } = numeroDeSerie;
-    public DateTime DataDeAquisicao { get; set; } = dataDeAquisicao;
-    public string Fabricante { get; set; } = fabricante;
+    public string Nome { get; set; }
+    public double  PrecoDeAquisicao { get; set; }
+    public string NumeroDeSerie { get; set; }
+    public DateTime DataDeAquisicao { get; set; }
+    public string Fabricante { get; set; }
 
+    public Equipamento(string nome, double precoDeAquisicao, string numeroDeSerie, DateTime dataDeAquisicao, Fabricante fabricante)
+    {
+        Nome = nome;
+        PrecoDeAquisicao = precoDeAquisicao;
+        NumeroDeSerie = numeroDeSerie;
+        DataDeAquisicao = dataDeAquisicao;
+        Fabricante = fabricante.Nome;
+    }
+    
+    public Equipamento(string nome, double precoDeAquisicao, string numeroDeSerie, DateTime dataDeAquisicao, string fabricante)
+    {
+        Nome = nome;
+        PrecoDeAquisicao = precoDeAquisicao;
+        NumeroDeSerie = numeroDeSerie;
+        DataDeAquisicao = dataDeAquisicao;
+        Fabricante = fabricante;
+    }
+    
     public override string ToString()
     {
         return $"-----------------------------------------\n"+

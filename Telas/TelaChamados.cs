@@ -2,7 +2,7 @@
 
 namespace GestaoDeEstoque;
 
-public class TelaChamados
+public static class TelaChamados
 {
     
     public static char ApresentarMenu()
@@ -32,7 +32,7 @@ public class TelaChamados
         return Console.ReadKey().KeyChar;
     }
     
-    public void CriarChamado()
+    public static void CriarChamado()
     {
         var titulo = "";
         
@@ -41,7 +41,7 @@ public class TelaChamados
             Console.Clear();
             Console.WriteLine("Digite o titulo do chamado [minimo 6 characteres]: ");
             titulo = Console.ReadLine();
-        } while (titulo is { Length: > 6 });
+        } while (titulo is { Length: < 6 });
 
         Console.WriteLine("Digite a descrição do chamado: ");
         var descricao = Console.ReadLine();
@@ -58,12 +58,13 @@ public class TelaChamados
         RepositorioChamados.GetListaDeChamados().Add(chamado);
     }
 
-    public void MostrarMostrarChamado()
+    public static void MostrarChamado()
     {
-        RepositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
+        RepositorioChamados.GetListaDeChamados().ForEach(eq => Console.WriteLine(eq.ToString()));
+        Console.ReadKey();
     }
     
-    public void ExcluirChamado()
+    public static void ExcluirChamado()
     {
         Console.WriteLine("Digite o id do chamado: ");
         var id = int.Parse(Console.ReadLine());
@@ -75,7 +76,7 @@ public class TelaChamados
         }
     }
     
-    public void EditarChamado()
+    public static void EditarChamado()
     {
         Console.WriteLine("Digite o Id do chamado: ");
         var equipId = int.Parse(Console.ReadLine());
