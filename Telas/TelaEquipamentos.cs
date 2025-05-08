@@ -95,32 +95,32 @@ public class TelaEquipamentos
 
     private static string EditarNome()
     {
-        Console.WriteLine("Dgite o novo nome do equipamento: ");
+        Console.WriteLine("Digite o novo nome do equipamento: ");
         var nome = Console.ReadLine();
         return nome ?? " ";
     }
     private static double EditarPreco()
     {
-        Console.WriteLine("Dgite o novo nome do equipamento: ");
+        Console.WriteLine("Digite o novo preço do equipamento: ");
         var preco = double.Parse(Console.ReadLine());
         return preco;
     }
     private static string EditarNumeroDeSerie()
     {
-        Console.WriteLine("Dgite o novo nome do equipamento: ");
+        Console.WriteLine("Digite o novo numero de serie do equipamento: ");
         var nSerie = Console.ReadLine();
         return nSerie ?? " ";
     }
     private static DateTime EditarDataDeAquisicao()
     {
-        Console.WriteLine("Dgite o novo nome do equipamento: ");
+        Console.WriteLine("Digite a nova data do equipamento: ");
         var dataString = Console.ReadLine();
         var data = DateTime.ParseExact(dataString, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         return data;
     }
     private static string EditarFabricante()
     {
-        Console.WriteLine("Dgite o novo nome do equipamento: ");
+        Console.WriteLine("Digite o novo fabricante do equipamento: ");
         var fabricante = Console.ReadLine();
         return fabricante ?? " ";
     }
