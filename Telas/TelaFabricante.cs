@@ -35,12 +35,12 @@ public class TelaFabricante
         
         var fabricante = new Fabricante(nome, email, telefone);
 
-        RepositorioFabricante.GetListaFabricante().Add(fabricante);
+        RepositorioFabricante.GetRegistro().Add(fabricante);
     }
 
     public static void MostrarFabricante()
     {
-        RepositorioFabricante.GetListaFabricante().ForEach(eq => Console.WriteLine(eq.ToString()));
+        RepositorioFabricante.GetRegistro().ForEach(eq => Console.WriteLine(eq.ToString()));
         Console.ReadKey();
     }
 
@@ -63,7 +63,7 @@ public class TelaFabricante
 
         var opcao = SelecionarEdição();
 
-        foreach (var fabricante in RepositorioFabricante.GetListaFabricante().Where
+        foreach (var fabricante in RepositorioFabricante.GetRegistro().Where
                      (fabricante => fabricante.Id == fabriId))
         {
             switch (opcao)
@@ -99,10 +99,10 @@ public class TelaFabricante
         Console.WriteLine("Digite o id do fabricante: ");
         var id = int.Parse(Console.ReadLine());
 
-        foreach (var fabricante in RepositorioFabricante.GetListaFabricante().Where
+        foreach (var fabricante in RepositorioFabricante.GetRegistro().Where
                      (fabricante => id == fabricante.Id))
         {
-            RepositorioFabricante.GetListaFabricante().Remove(fabricante);
+            RepositorioFabricante.GetRegistro().Remove(fabricante);
         }
     }
 }

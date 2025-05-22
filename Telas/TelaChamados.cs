@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using GestaoDeEstoque.Repositórios;
 
 namespace GestaoDeEstoque;
 
@@ -55,12 +56,12 @@ public static class TelaChamados
 
         var chamado = new Chamado(titulo, descricao, equipamento, data);
 
-        RepositorioChamados.GetListaDeChamados().Add(chamado);
+        RepositorioChamados.GetRegistro().Add(chamado);
     }
 
     public static void MostrarChamado()
     {
-        RepositorioChamados.GetListaDeChamados().ForEach(eq => Console.WriteLine(eq.ToString()));
+        RepositorioChamados.GetRegistro().ForEach(eq => Console.WriteLine(eq.ToString()));
         Console.ReadKey();
     }
     
@@ -69,10 +70,10 @@ public static class TelaChamados
         Console.WriteLine("Digite o id do chamado: ");
         var id = int.Parse(Console.ReadLine());
 
-        foreach (var chamado in RepositorioChamados.GetListaDeChamados().Where
+        foreach (var chamado in RepositorioChamados.GetRegistro().Where
                      (chamado => id == chamado.Id))
         {
-            RepositorioChamados.GetListaDeChamados().Remove(chamado);
+            RepositorioChamados.GetRegistro().Remove(chamado);
         }
     }
     
@@ -83,7 +84,7 @@ public static class TelaChamados
 
         var opcao = SelecionarEdição();
 
-        foreach (var chamado in RepositorioChamados.GetListaDeChamados().Where
+        foreach (var chamado in RepositorioChamados.GetRegistro().Where
                      (chamado => chamado.Id == equipId))
         {
             switch (opcao)

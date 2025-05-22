@@ -1,6 +1,8 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
 
-public class Equipamento
+namespace GestaoDeEstoque;
+
+public class Equipamento : EntidadeBase
 {
     public int Id { get; } = GeradorDeId.GerarId();
     public string Nome { get; set; }

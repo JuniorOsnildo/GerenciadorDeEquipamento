@@ -1,11 +1,13 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
+
+namespace GestaoDeEstoque;
 
 public class Chamado(
     string titulo,
     string descricao,
     Equipamento equipamento,
     DateTime dataDeAbertura
-)
+) : EntidadeBase
 {
     public int Id { get; } = GeradorDeId.GerarId();
     public string Titulo { get; set; } = titulo;

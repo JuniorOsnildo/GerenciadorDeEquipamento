@@ -1,11 +1,13 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
 
-public static class RepositorioChamados
+namespace GestaoDeEstoque.Repositórios;
+
+public abstract class RepositorioChamados : RepositorioBase
 {
-    private static readonly List<Chamado> ListaChamados = [];
+    private static readonly List<Chamado> Registro = [];
 
-    public static List<Chamado> GetListaDeChamados()
+    public new static List<Chamado> GetRegistro()
     {
-        return ListaChamados;
+        return Registro;
     }
 }

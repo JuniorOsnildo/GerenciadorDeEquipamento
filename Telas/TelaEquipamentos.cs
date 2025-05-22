@@ -44,7 +44,7 @@ public class TelaEquipamentos
         var fabricanteString = Console.ReadLine();
 
         Fabricante fabri = null;
-        foreach (var fabricante in RepositorioFabricante.GetListaFabricante().Where
+        foreach (var fabricante in RepositorioFabricante.GetRegistro().Where
                      (fabricante => fabricanteString == fabricante.Nome))
         {
             fabri = fabricante;
@@ -55,18 +55,18 @@ public class TelaEquipamentos
             : new Equipamento(nome, preco, numeroDeSerie, dataDeAquisicao, fabri);
         
 
-        RepositorioEquipamento.GetListaEquipamento().Add(equipamento);
+        RepositorioEquipamento.GetRegistro().Add(equipamento);
     }
 
     public static void MostrarEquipamento()
     {
-        RepositorioEquipamento.GetListaEquipamento().ForEach(eq => Console.WriteLine(eq.ToString()));
+        RepositorioEquipamento.GetRegistro().ForEach(eq => Console.WriteLine(eq.ToString()));
         Console.ReadKey();
     }
 
     public static Equipamento? BuscarEquipamentoPorId(int id)
     {
-        return RepositorioEquipamento.GetListaEquipamento().FirstOrDefault(eq => eq.Id == id);
+        return RepositorioEquipamento.GetRegistro().FirstOrDefault(eq => eq.Id == id);
     }
 
     private static char SelecionarEdição()
@@ -90,7 +90,7 @@ public class TelaEquipamentos
 
         var opcao = SelecionarEdição();
 
-        foreach (var equipamento in RepositorioEquipamento.GetListaEquipamento().Where
+        foreach (var equipamento in RepositorioEquipamento.GetRegistro().Where
                      (equipamento => equipamento.Id == equipId))
         {
             switch (opcao)
@@ -141,10 +141,10 @@ public class TelaEquipamentos
         Console.WriteLine("Digite o id do equipamento: ");
         var id = int.Parse(Console.ReadLine());
 
-        foreach (var equip in RepositorioEquipamento.GetListaEquipamento().Where
+        foreach (var equip in RepositorioEquipamento.GetRegistro().Where
                      (equip => id == equip.Id))
         {
-            RepositorioEquipamento.GetListaEquipamento().Remove(equip);
+            RepositorioEquipamento.GetRegistro().Remove(equip);
         }
     }
 }
