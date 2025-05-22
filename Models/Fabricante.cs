@@ -1,10 +1,8 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
 
-public class Fabricante(
-    string nome,
-    string email,
-    string telefone
-)
+namespace GestaoDeEstoque;
+
+public class Fabricante(string nome, string email, string telefone) : EntidadeBase
 {
     public int Id { get; } = GeradorDeId.GerarId();
     public string Nome { get; set; } = nome;

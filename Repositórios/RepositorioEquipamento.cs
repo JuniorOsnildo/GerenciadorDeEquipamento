@@ -1,12 +1,14 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
 
-public static class RepositorioEquipamento
+namespace GestaoDeEstoque;
+
+public abstract class RepositorioEquipamento : RepositorioBase
 {
-    private static readonly List<Equipamento> ListaEquipamento = [];
+    private static readonly List<Equipamento> Registro = [];
 
-    public static List<Equipamento> GetListaEquipamento()
+    public new static List<Equipamento> GetRegistro()
     {
-        return ListaEquipamento;
+        return Registro;
     }
 
     
