@@ -2,14 +2,7 @@
 
 namespace GestaoDeEstoque;
 
-public abstract class RepositorioEquipamento : RepositorioBase
+public abstract class RepositorioEquipamento : RepositorioBase<Equipamento>
 {
-    private static readonly List<Equipamento> Registro = [];
 
-    public new static List<Equipamento> GetRegistro()
-    {
-        return Registro;
-    }
-
-    
 }
