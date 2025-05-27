@@ -1,23 +1,10 @@
 ﻿using System.Globalization;
+using GestaoDeEstoque.Compartilhado;
 
 namespace GestaoDeEstoque;
 
-public class TelaEquipamentos
+public class TelaEquipamentos : TelaBase
 {
-    public static char ApresentarMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("-- MENU DE EQUIPAMENTOS --");
-        Console.WriteLine("1 -> Registrar equipamento");
-        Console.WriteLine("2 -> Lista de equipamentos");
-        Console.WriteLine("3 -> Editar equipamento");
-        Console.WriteLine("4 -> Remover equipamento");
-        Console.WriteLine("0 -> Sair");
-        Console.WriteLine();
-        Console.Write("-> ");
-        return Console.ReadKey().KeyChar;
-    }
-
     public static void CriarEquipamento()
     {
         var nome = "";
