@@ -1,25 +1,11 @@
 ﻿using System.Globalization;
+using GestaoDeEstoque.Compartilhado;
 using GestaoDeEstoque.Repositórios;
 
 namespace GestaoDeEstoque;
 
-public static class TelaChamados
+public abstract class TelaChamados : TelaBase
 {
-    
-    public static char ApresentarMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("-- MENU DE CHAMADOS --");
-        Console.WriteLine("1 -> Registro de chamado");
-        Console.WriteLine("2 -> Lista de chamados");
-        Console.WriteLine("3 -> Editar chamado");
-        Console.WriteLine("4 -> Remover chamado");
-        Console.WriteLine("0 -> Sair");
-        Console.WriteLine();
-        Console.Write("-> ");
-        return Console.ReadKey().KeyChar;
-    }
-    
     private static char SelecionarEdição()
     {
         Console.Clear();

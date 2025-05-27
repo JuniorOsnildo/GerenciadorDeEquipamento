@@ -1,21 +1,9 @@
-﻿namespace GestaoDeEstoque;
+﻿using GestaoDeEstoque.Compartilhado;
 
-public class TelaFabricante
+namespace GestaoDeEstoque;
+
+public abstract class TelaFabricante : TelaBase
 {
-    public static char ApresentarMenu()
-    {
-        Console.Clear();
-        Console.WriteLine("-- MENU DE EQUIPAMENTOS --");
-        Console.WriteLine("1 -> Registrar fabricante");
-        Console.WriteLine("2 -> Lista de fabricantes");
-        Console.WriteLine("3 -> Editar fabricante");
-        Console.WriteLine("4 -> Remover fabrincante");
-        Console.WriteLine("0 -> Sair");
-        Console.WriteLine();
-        Console.Write("-> ");
-        return Console.ReadKey().KeyChar;
-    }
-
     public static void CriarFabricante()
     {
         var nome = "";
