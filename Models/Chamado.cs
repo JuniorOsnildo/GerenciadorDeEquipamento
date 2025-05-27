@@ -9,7 +9,6 @@ public class Chamado(
     DateTime dataDeAbertura
 ) : EntidadeBase
 {
-    public int Id { get; } = GeradorDeId.GerarId();
     public string Titulo { get; set; } = titulo;
     public string Descricao { get; set; } = descricao;
     public Equipamento Equipamento { get; set; } = equipamento;

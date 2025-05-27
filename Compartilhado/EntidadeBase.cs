@@ -2,5 +2,5 @@
 
 public class EntidadeBase
 {
-    public int Id { get; set; }
+    public int Id { get; set; } = GeradorDeId.GerarId();
 }

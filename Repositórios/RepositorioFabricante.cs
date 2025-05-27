@@ -2,12 +2,7 @@
 
 namespace GestaoDeEstoque;
 
-public abstract class RepositorioFabricante : RepositorioBase
+public abstract class RepositorioFabricante : RepositorioBase<Fabricante>
 {
-    private static readonly List<Fabricante> Registro = [];
-    
-    public new static List<Fabricante> GetRegistro()
-    {
-        return Registro;
-    }
+
 }

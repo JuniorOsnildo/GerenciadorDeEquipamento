@@ -1,10 +1,10 @@
 ﻿namespace GestaoDeEstoque.Compartilhado;
 
-public abstract class RepositorioBase
+public abstract class RepositorioBase<T> where T : EntidadeBase
 {
-    private static readonly List<EntidadeBase> Registro = [];
+    private static readonly List<T> Registro = [];
     
-    public static List<EntidadeBase> GetRegistro()
+    public static List<T> GetRegistro()
     {
         return Registro;
     }

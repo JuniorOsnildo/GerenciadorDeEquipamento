@@ -2,12 +2,7 @@
 
 namespace GestaoDeEstoque.Repositórios;
 
-public abstract class RepositorioChamados : RepositorioBase
+public abstract class RepositorioChamados : RepositorioBase<Chamado>
 {
-    private static readonly List<Chamado> Registro = [];
-
-    public new static List<Chamado> GetRegistro()
-    {
-        return Registro;
-    }
+    
 }
